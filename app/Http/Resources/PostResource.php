@@ -30,11 +30,4 @@ class PostResource extends JsonResource
             'category' => new CategoryResource($this->whenLoaded('category')),
         ];
     }
-    public function with($request)
-    {
-        return [
-            'version' => "1.0.0",
-            'author_url' => "https://mwendofamilia.com"
-        ];
-    }
 }

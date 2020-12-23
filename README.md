@@ -159,3 +159,7 @@ Different versions of this command are as follows:
     composer require laravel/sanctum
     
  -->
+
+
+to disable teams in laravel : 
+comment out the Feature::teams() line in config/jetstream.php

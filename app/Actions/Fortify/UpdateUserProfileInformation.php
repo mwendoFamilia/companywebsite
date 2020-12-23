@@ -24,10 +24,13 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'image', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
+
         if (isset($input['photo'])) {
             $user->updateProfilePhoto($input['photo']);
         }
-        if ($input['email'] !== $user->email && $user instanceof MustVerifyEmail) {
+
+        if ($input['email'] !== $user->email &&
+            $user instanceof MustVerifyEmail) {
             $this->updateVerifiedUser($user, $input);
         } else {
             $user->forceFill([
@@ -53,6 +56,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'email' => $input['email'],
             'email_verified_at' => null,
         ])->save();
+
         $user->sendEmailVerificationNotification();
     }
 }

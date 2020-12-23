@@ -17,17 +17,9 @@ class ImageResource extends JsonResource
         return [
             'image_id' => $this->id,
             'image_description' => $this->description,
-            'image_url' => $this->url,
+            'image_url' => $this->url,          // asset($this->url)
             'post_id' => $this->post_id,
-            'is_featured' => $this->featured,
-           
-        ];
-    }
-    public function with($request)
-    {
-        return [
-            'version' => "1.0.0",
-            'author_url' => "https://mwendofamilia.com"
+            'is_featured' => $this->featured
         ];
     }
 }

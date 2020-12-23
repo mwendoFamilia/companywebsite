@@ -14,18 +14,17 @@ class CategoryResource extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
-        return[
-            'category_id'=>$this->id,
-            'category_title'=>$this->title,
-            'category_color'=>$this->color,
+        return [
+            'category_id' => $this->id,
+            'category_title' => $this->title,
+            'category_color' => $this->color,
         ];
     }
-    public function with($request)
-    {
-        return[
-            'version'=>"1.0.0",
-            'author_url'=>"https://mwendofamilia.com"
+
+    public function with($request){
+        return [
+            'version' => "1.0.0",
+            'author_url' => "https://mditech.net"
         ];
     }
 }

@@ -16,14 +16,7 @@ class TagResource extends JsonResource
     {
         return [
             'tag_id' => $this->id,
-            'tag_title' => $this->title,
-        ];
-    }
-    public function with($request)
-    {
-        return [
-            'version' => "1.0.0",
-            'author_url' => "https://mwendofamilia.com",
+            'title' => $this->title
         ];
     }
 }
