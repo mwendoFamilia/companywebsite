@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -16,7 +15,6 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
-    use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
 
@@ -26,8 +24,25 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name',
+        'last_name',
+        'email',
+        'password',
+        'liked_posts',
+        'disliked_posts',
+        'favourite_posts',
+        'favourite_categories',
+        'preferences',
+        'remember_token',
     ];
+
+    public function comments(){
+        return $this->hasMany(Comment::class, 'author_id', 'id');
+    }
+
+    public function posts(){
+        return $this->hasMany(Post::class, 'author_id', 'id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.
